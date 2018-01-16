@@ -36,7 +36,7 @@
 
   <artifactId>kafkalogs</artifactId>
   <packaging>hpi</packaging>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.2-SNAPSHOT</version>
   <name>Kafka Logs Plugin</name>
   <description>Distributes Build Logs to Kafka Servers</description>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/Kafka+Logs+Plugin</url>
