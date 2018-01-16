@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>2.37</version>
+  </parent>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>http://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+
+  <properties>
+    <jenkins.version>2.89.2</jenkins.version>
+    <java.level>8</java.level>
+  </properties>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>http://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <scm>
+    <connection>scm:git:git://github.com/jenkinsci/kafkalogs-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/kafkalogs-plugin.git</developerConnection>
+    <url>http://github.com/jenkinsci/kafkalogs-plugin</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <artifactId>kafkalogs</artifactId>
+  <packaging>hpi</packaging>
+  <version>0.1.1-SNAPSHOT</version>
+  <name>Kafka Logs</name>
+  <description>Distributes Build Logs to Kafka Servers</description>
+  <url>http://wiki.jenkins-ci.org/display/JENKINS/Kafka+Logs+Plugin</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+  </dependencies>
+
+  <developers>
+    <developer>
+      <id>trevorlinton</id>
+      <name>Trevor Linton</name>
+      <email>trevor.linton@octanner.com</email>
+    </developer>
+  </developers>
+
+</project>
+
