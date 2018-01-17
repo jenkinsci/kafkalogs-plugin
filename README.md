@@ -13,7 +13,7 @@ E.g., pipeline job "test" with build 40 ran with the following pipeline script:
 
 ```groovy
 node {
-    wrap([$class: 'KafkaBuildWrapper', kafkaServers: 'host1.example.com:9092,host2.example.com:9092', kafkaTopic: 'buildlogs']) {
+    wrap([$class: 'KafkaBuildWrapper', kafkaServers: 'host1.example.com:9092,host2.example.com:9092', kafkaTopic: 'buildlogs', metadata:'Other info to send..']) {
         echo 'Hello World'
         echo 'Oh Hello'
         echo 'Finally'
@@ -24,9 +24,9 @@ node {
 Would produce messages on kafka topic "buildlogs":
 
 ```
-{"build":40,"job":"test","message":"Hello World"}
-{"build":40,"job":"test","message":"Oh Hello"}
-{"build":40,"job":"test","message":"Finally"}
+{"build":40,"job":"test","message":"Hello World","metadata":"Other info to send.."}
+{"build":40,"job":"test","message":"Oh Hello","metadata":"Other info to send.."}
+{"build":40,"job":"test","message":"Finally","metadata":"Other info to send.."}
 ```
 
 ## Copyright and Such

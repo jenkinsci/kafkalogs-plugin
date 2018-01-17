@@ -62,9 +62,10 @@ public final class KafkaBuildWrapper extends SimpleBuildWrapper implements Seria
 
     private final String kafkaServers;
     private final String kafkaTopic;
+    private final String metadata;
     private KafkaWrapper producer;
-    private int build_id;
-    private String job_name;
+    private int buildId;
+    private String jobName;
 
     private static class CleanupDisposer extends Disposer {
         private KafkaWrapper producer;
@@ -87,9 +88,10 @@ public final class KafkaBuildWrapper extends SimpleBuildWrapper implements Seria
      * Create a new {@link KafkaBuildWrapper}.
      */
     @DataBoundConstructor
-    public KafkaBuildWrapper(String kafkaServers, String kafkaTopic) {
+    public KafkaBuildWrapper(String kafkaServers, String kafkaTopic, String metadata) {
         this.kafkaServers = kafkaServers;
         this.kafkaTopic = kafkaTopic;
+        this.metadata = metadata;
     }
 
     public String getKafkaServers() {
@@ -98,6 +100,11 @@ public final class KafkaBuildWrapper extends SimpleBuildWrapper implements Seria
 
     public String getKafkaTopic() {
         return this.kafkaTopic == null ? "buildlogs" : this.kafkaTopic;
+    }
+
+
+    public String getMetdata() {
+        return this.kafkaTopic == null ? "" : this.metadata;
     }
 
     @Override
@@ -109,10 +116,10 @@ public final class KafkaBuildWrapper extends SimpleBuildWrapper implements Seria
     public void setUp(Context context, Run<?, ?> build, FilePath workspace, Launcher launcher, TaskListener listener, EnvVars initialEnvironment) 
         throws IOException, InterruptedException 
     {
-        this.build_id = build_id = build.getNumber();
-        this.job_name = build.getParent().getName();
+        this.buildId = build.getNumber();
+        this.jobName = build.getParent().getName();
         // DO ANYTHING TO SETUP
-        this.producer = new KafkaWrapper(this.build_id, this.job_name, this.kafkaServers, this.kafkaTopic);
+        this.producer = new KafkaWrapper(this.buildId, this.jobName, this.metadata, this.kafkaServers, this.kafkaTopic);
         context.setDisposer(new CleanupDisposer(this.producer));
     }
 

@@ -37,14 +37,16 @@ public final class KafkaWrapper implements Serializable {
 	private String kafkaServers;
 	private String kafkaTopic;
 	private String jobName;
+	private String metadata;
 	private int buildId;
 	private transient Producer<String, String> producer;
 
-	public KafkaWrapper(int buildId, String jobName, String kafkaServers, String kafkaTopic) {
+	public KafkaWrapper(int buildId, String jobName, String metadata, String kafkaServers, String kafkaTopic) {
 		this.kafkaServers = kafkaServers;
 		this.kafkaTopic = kafkaTopic;
 		this.jobName = jobName;
 		this.buildId = buildId;
+		this.metadata = metadata;
 
         Thread.currentThread().setContextClassLoader(null);
         Properties props = new Properties();
@@ -60,6 +62,7 @@ public final class KafkaWrapper implements Serializable {
 		value.put("job", this.jobName);
 		value.put("build", this.buildId);
 		value.put("message", data.trim());
+		value.put("metadata", this.metadata);
 		this.producer.send(new ProducerRecord<>(this.kafkaTopic, this.jobName, value.toJSONString()));
 	}
 

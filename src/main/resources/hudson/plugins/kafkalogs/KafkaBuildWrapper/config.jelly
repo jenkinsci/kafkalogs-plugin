@@ -6,4 +6,7 @@
 	<f:entry title="Kafka Topic" field="kafkaTopic">
       <f:textbox/>
 	</f:entry>
+	<f:entry title="Kafka Metadata" field="metadata">
+      <f:textbox/>
+	</f:entry>
 </j:jelly>
