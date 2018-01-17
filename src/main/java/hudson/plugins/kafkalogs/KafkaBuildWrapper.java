@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright (c) 2017 OC Tanner
+ * Copyright (c) 2018 OC Tanner
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -80,7 +80,6 @@ public final class KafkaBuildWrapper extends SimpleBuildWrapper implements Seria
                 this.producer.close();
                 this.producer = null;
             }
-            LOGGER.info("Tearing down kafka build wrapper");
         }
     }
 

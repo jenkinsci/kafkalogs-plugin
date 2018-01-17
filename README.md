@@ -29,5 +29,8 @@ Would produce messages on kafka topic "buildlogs":
 {"build":40,"job":"test","message":"Finally"}
 ```
 
+## Copyright and Such
 
-Copyright O.C. Tanner 2018, https://www.octanner.com. See LICENSE for more information.  Work was derived from the sources of https://github.com/jenkinsci/ansicolor-plugin Thanks to Daniel Dobrovkine for providing a great color ansi plugin.
+Copyright O.C. Tanner 2018, https://www.octanner.com. See LICENSE for more information.  
+
+Work was derived from the sources of https://github.com/jenkinsci/ansicolor-plugin Thanks to Daniel Dobrovkine for providing a great color ansi plugin.
