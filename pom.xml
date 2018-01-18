@@ -30,7 +30,7 @@
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/kafkalogs-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/kafkalogs-plugin.git</developerConnection>
-    <url>http://github.com/jenkinsci/kafkalogs-plugin</url>
+    <url>https://github.com/jenkinsci/kafkalogs-plugin</url>
     <tag>HEAD</tag>
   </scm>
 
