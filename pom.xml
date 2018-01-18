@@ -31,12 +31,12 @@
     <connection>scm:git:git://github.com/jenkinsci/kafkalogs-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/kafkalogs-plugin.git</developerConnection>
     <url>https://github.com/jenkinsci/kafkalogs-plugin</url>
-    <tag>HEAD</tag>
+    <tag>kafkalogs-0.1.6</tag>
   </scm>
 
   <artifactId>kafkalogs</artifactId>
   <packaging>hpi</packaging>
-  <version>0.1.6-SNAPSHOT</version>
+  <version>0.1.6</version>
   <name>Kafka Logs Plugin</name>
   <description>Distributes Build Logs to Kafka Servers</description>
   <url>https://wiki.jenkins-ci.org/display/JENKINS/Kafkalogs+Plugin</url>
