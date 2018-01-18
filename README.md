@@ -27,10 +27,11 @@ Or you can use `withKafkaLog` structs syntax:
 node {
 	withKafkaLog(kafkaServers: 'host1.example.com:9092,host2.example.com:9092', kafkaTopic: 'buildlogs', metadata:'Other info to send..') {
 		echo 'Hello World'
-        echo 'Oh Hello'
-        echo 'Finally'
+		echo 'Oh Hello'
+		echo 'Finally'
 	}
 }
+```
 
 
 Would produce messages on kafka topic "buildlogs":
