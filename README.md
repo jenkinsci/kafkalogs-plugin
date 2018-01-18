@@ -3,7 +3,7 @@
 This plugin adds support for wrapping pipeline project logs in a build wrapper that ships them to kafka.
 
 This plugin is available [here](http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/kafkalogs/)
-and has [a page](https://wiki.jenkins-ci.org/display/JENKINS/Kafka+Logs+Plugin) on the Jenkins Wiki.
+and has [a page](https://wiki.jenkins.io/display/JENKINS/Kafkalogs+Plugin) on the Jenkins Wiki.
 
 ## Using in pipeline workflows
 
