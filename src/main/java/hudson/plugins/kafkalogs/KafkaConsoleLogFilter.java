@@ -60,7 +60,7 @@ public final class KafkaConsoleLogFilter extends ConsoleLogFilter implements Ser
         return new LineTransformationOutputStream() {
             @Override
             protected void eol(byte[] b, int len) throws IOException {
-                p.write(new String(b, 0, len));
+                p.write(new String(b, 0, len, "UTF-8"));
                 logger.write(b, 0, len);
                 logger.flush();
             }

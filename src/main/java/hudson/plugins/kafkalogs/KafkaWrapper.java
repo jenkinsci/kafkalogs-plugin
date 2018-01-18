@@ -33,7 +33,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public final class KafkaWrapper implements Serializable {
-
+	static final long serialVersionUID = 3223444542L;
+	
 	private String kafkaServers;
 	private String kafkaTopic;
 	private String jobName;
