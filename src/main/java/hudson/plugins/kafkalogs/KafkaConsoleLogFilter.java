@@ -61,6 +61,7 @@ public final class KafkaConsoleLogFilter extends ConsoleLogFilter implements Ser
             @Override
             protected void eol(byte[] b, int len) throws IOException {
                 p.write(new String(b, 0, len));
+                logger.write(b, 0, len);
                 logger.flush();
             }
 
