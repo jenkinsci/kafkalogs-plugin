@@ -51,6 +51,8 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
+import org.jenkinsci.Symbol;
+
 /**
  * Build wrapper that decorates the build's logger
  *
@@ -103,7 +105,7 @@ public final class KafkaBuildWrapper extends SimpleBuildWrapper implements Seria
     }
 
 
-    public String getMetdata() {
+    public String getMetadata() {
         return this.kafkaTopic == null ? "" : this.metadata;
     }
 
@@ -127,7 +129,7 @@ public final class KafkaBuildWrapper extends SimpleBuildWrapper implements Seria
     /**
      * Registers {@link KafkaBuildWrapper} as a {@link BuildWrapper}.
      */
-    @Extension
+    @Extension @Symbol("withKafkaLog")
     public static final class DescriptorImpl extends BuildWrapperDescriptor {
 
         public DescriptorImpl() {
