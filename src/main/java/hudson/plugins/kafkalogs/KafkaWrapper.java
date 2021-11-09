@@ -26,7 +26,10 @@ package hudson.plugins.kafkalogs;
 import java.util.Properties;
 import java.lang.Thread;
 import java.io.Serializable;
+
+import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.common.config.SslConfigs;
 import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.json.simple.JSONArray;
@@ -39,8 +42,12 @@ public final class KafkaWrapper implements Serializable {
 	private String kafkaTopic;
 	private String jobName;
 	private String metadata;
+	private  String securityProtocol;
+	private  String sslTruststoreLoc;
+	private  String sslTrustStorePass;
 	private int buildId;
 	private transient Producer<String, String> producer;
+	
 
 	public KafkaWrapper(int buildId, String jobName, String metadata, String kafkaServers, String kafkaTopic) {
 		this.kafkaServers = kafkaServers;
@@ -55,6 +62,30 @@ public final class KafkaWrapper implements Serializable {
         props.put(ProducerConfig.CLIENT_ID_CONFIG, "jenkins");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        this.producer = new KafkaProducer<>(props);
+	}
+	
+	public KafkaWrapper(int buildId, String jobName, String metadata, String kafkaServers, String kafkaTopic, 
+			String securityProtocol, String sslTruststoreLoc, String sslTrustStorePass) {
+		this.kafkaServers = kafkaServers;
+		this.kafkaTopic = kafkaTopic;
+		this.jobName = jobName;
+		this.buildId = buildId;
+		this.metadata = metadata;
+		this.securityProtocol= securityProtocol;
+		this.sslTruststoreLoc = sslTruststoreLoc;
+		this.sslTrustStorePass = sslTrustStorePass;
+		
+        Thread.currentThread().setContextClassLoader(null);
+        Properties props = new Properties();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
+        props.put(ProducerConfig.CLIENT_ID_CONFIG, "jenkins");
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+      //configure the following three settings for SSL Encryption
+        props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");
+        props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, sslTruststoreLoc);
+        props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG,  sslTrustStorePass);
         this.producer = new KafkaProducer<>(props);
 	}
 
