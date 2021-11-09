@@ -118,7 +118,7 @@ public class KafkaSslBuildWrapper extends SimpleBuildWrapper implements Serializ
 
 
     /**
-     * Registers {@link KafkaBuildWrapper} as a {@link BuildWrapper}.
+     * Registers {@link KafkaSslBuildWrapper} as a {@link BuildWrapper}.
      */
     @Extension @Symbol("withKafkaLog")
     public static final class DescriptorImpl extends BuildWrapperDescriptor {
